@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { HabitList } from "../components/HabitList";
 
 export default function Home() {
   return (
@@ -11,12 +12,14 @@ export default function Home() {
       </Head>
 
       <Main>
-        <h1>My App</h1>
+        <h1>HabitTracker</h1>
+
+        <HabitList></HabitList>
       </Main>
     </div>
   );
 }
 
 const Main = styled.main`
-  background-color: red;
+  background-color: white;
 `;
