@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { HabitList } from "../components/HabitList";
+import { HABITS } from "../lib/db";
+import { Habit } from "../components/HabitList";
 
-export default function Home() {
+export default function Home(habit) {
   return (
     <div>
       <Head>
@@ -13,8 +14,12 @@ export default function Home() {
 
       <Main>
         <h1>HabitTracker</h1>
-
-        <HabitList></HabitList>
+        <h3>All Day</h3>
+        <ul>
+          {HABITS.map((habitElement) => {
+            return <Habit key={habitElement.id} habit={habitElement} />;
+          })}
+        </ul>
       </Main>
     </div>
   );
