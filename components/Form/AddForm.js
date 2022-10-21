@@ -22,7 +22,7 @@ export default function CreateNewForm({ onAddNewData }) {
         placeholder="Enter your habit..."
         name="name"
         rows="1"
-        maxLength="15"
+        maxLength="50"
         minLength={3}
       ></InputBox>
 
