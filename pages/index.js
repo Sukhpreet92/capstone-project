@@ -34,20 +34,18 @@ export default function Home() {
       </Head>
 
       <Main>
-        <ul>
-          <li>
-            {cardData.map((card) => {
-              return (
-                <Card
-                  key={card.id}
-                  name={card.name}
-                  onDelete={() => deleteCard(card.id)}
-                />
-              );
-            })}
-          </li>
-          <CreateNewForm onAddNewData={appendCard} />
-        </ul>
+        <div>
+          {cardData.map((card) => {
+            return (
+              <Card
+                key={card.id}
+                name={card.name}
+                onDelete={() => deleteCard(card.id)}
+              />
+            );
+          })}
+        </div>
+        <CreateNewForm onAddNewData={appendCard} />
       </Main>
     </div>
   );

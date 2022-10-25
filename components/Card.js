@@ -5,7 +5,7 @@ import deleteIcon from "../public/images/deleteIcon.svg";
 export default function Card({ name, onDelete }) {
   return (
     <CardContainer>
-      <HabitContainer>{name} </HabitContainer>
+      {name}
       <DeleteButton onClick={onDelete}>
         <Image src={deleteIcon} alt="delete your habit" />
       </DeleteButton>
@@ -13,18 +13,13 @@ export default function Card({ name, onDelete }) {
   );
 }
 
-const CardContainer = styled.article`
+const CardContainer = styled.li`
   display: flex;
   justify-content: space-between;
   background: lightblue;
   border-radius: 80em;
   margin: 2em 0;
   padding-left: 1em;
-`;
-const HabitContainer = styled.ol`
-  justify-content: center;
-  font-size: 1em;
-  padding: 0em;
 `;
 
 const DeleteButton = styled.button`
