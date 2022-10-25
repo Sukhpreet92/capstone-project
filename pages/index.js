@@ -1,15 +1,15 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { fakeHabitDB, category } from "../lib/db";
+import { HabitsData, category } from "../lib/db";
 import Header from "../components/Header";
-import CreateNewForm from "../components/Form/AddForm";
+import CreateNewForm from "../components/CreateNewForm";
 
-import Card from "../components/Form/Cards";
+import Card from "../components/Cards";
 import { nanoid } from "nanoid";
 
 export default function Home() {
-  const [cardData, setCardData] = useState(fakeHabitDB);
+  const [cardData, setCardData] = useState(HabitsData);
 
   function appendCard(name) {
     setCardData((cardData) => [
@@ -21,8 +21,8 @@ export default function Home() {
     ]);
   }
   function deleteCard(id) {
-    const newHabit = cardData.filter((card) => card.id !== id);
-    setCardData(newHabit);
+    const updatedHabitsList = cardData.filter((card) => card.id !== id);
+    setCardData(updatedHabitsList);
   }
   return (
     <div>
@@ -34,18 +34,20 @@ export default function Home() {
       </Head>
 
       <Main>
-        <div>
-          {cardData.map((card) => {
-            return (
-              <Card
-                key={card.id}
-                name={card.name}
-                onDelete={() => deleteCard(card.id)}
-              />
-            );
-          })}
-        </div>
-        <CreateNewForm onAddNewData={appendCard} />
+        <ul>
+          <li>
+            {cardData.map((card) => {
+              return (
+                <Card
+                  key={card.id}
+                  name={card.name}
+                  onDelete={() => deleteCard(card.id)}
+                />
+              );
+            })}
+          </li>
+          <CreateNewForm onAddNewData={appendCard} />
+        </ul>
       </Main>
     </div>
   );

@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import Image from "next/image";
-import deleteButton from "/Users/sukhpreet/Desktop/Project/capstone-project/public/images/deleteButton.svg";
+import deleteIcon from "../public/images/deleteIcon.svg";
 
 export default function Card({ name, onDelete }) {
   return (
-    <>
-      <CardContainer>
-        <HabitContainer>{name} </HabitContainer>
-        <ImageContainer onClick={onDelete}>
-          <Image src={deleteButton} alt="delete your habit" />
-        </ImageContainer>
-      </CardContainer>
-    </>
+    <CardContainer>
+      <HabitContainer>{name} </HabitContainer>
+      <DeleteButton onClick={onDelete}>
+        <Image src={deleteIcon} alt="delete your habit" />
+      </DeleteButton>
+    </CardContainer>
   );
 }
 
@@ -29,7 +27,7 @@ const HabitContainer = styled.ol`
   padding: 0em;
 `;
 
-const ImageContainer = styled.button`
+const DeleteButton = styled.button`
   width: 2em;
   height: 2em;
 `;
