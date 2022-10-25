@@ -5,7 +5,7 @@ import { HabitsData, category } from "../lib/db";
 import Header from "../components/Header";
 import CreateNewForm from "../components/CreateNewForm";
 
-import Card from "../components/Cards";
+import Card from "../components/Card";
 import { nanoid } from "nanoid";
 
 export default function Home() {
