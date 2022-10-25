@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import CreateNewForm from "../components/Form/AddForm";
 
 import Card from "../components/Form/Cards";
+import { nanoid } from "nanoid";
 
 export default function Home() {
   const [cardData, setCardData] = useState(fakeHabitDB);
@@ -15,10 +16,14 @@ export default function Home() {
       ...cardData,
       {
         name,
+        id: nanoid(),
       },
     ]);
   }
-
+  function deleteCard(id) {
+    const newHabit = cardData.filter((card) => card.id !== id);
+    setCardData(newHabit);
+  }
   return (
     <div>
       <Header />
@@ -30,9 +35,15 @@ export default function Home() {
 
       <Main>
         <div>
-          {cardData.map((card) => (
-            <Card key={card.id} name={card.name} />
-          ))}
+          {cardData.map((card) => {
+            return (
+              <Card
+                key={card.id}
+                name={card.name}
+                onDelete={() => deleteCard(card.id)}
+              />
+            );
+          })}
         </div>
         <CreateNewForm onAddNewData={appendCard} />
       </Main>
