@@ -34,7 +34,7 @@ export default function Home() {
       </Head>
 
       <Main>
-        <div>
+        <ul>
           {cardData.map((card) => {
             return (
               <Card
@@ -44,7 +44,7 @@ export default function Home() {
               />
             );
           })}
-        </div>
+        </ul>
         <CreateNewForm onAddNewData={appendCard} />
       </Main>
     </div>
