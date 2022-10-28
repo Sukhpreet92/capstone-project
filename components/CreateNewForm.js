@@ -19,7 +19,7 @@ export default function CreateNewForm({ onAddNewData }) {
     <form onSubmit={sendForm}>
       <InputBox
         type="text"
-        placeholder="Enter your habit..."
+        placeholder="&#9997;&#65039;Enter your habit..."
         name="name"
         rows="1"
         maxLength="50"
@@ -49,6 +49,8 @@ const Button = styled.button`
 `;
 
 const InputBox = styled.input`
+  width: 10em;
+  height: 2.5em;
   margin: auto;
   display: block;
 `;

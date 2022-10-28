@@ -10,9 +10,9 @@ export default function Header() {
 
 const HeaderPage = styled.header`
   position: sticky;
-  color: white;
+  color: black;
   text-align: center;
-  background-color: skyblue;
+  background-color: transparent;
 `;
 
 const H2 = styled.h2`

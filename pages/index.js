@@ -24,8 +24,15 @@ export default function Home() {
     const updatedHabitsList = cardData.filter((card) => card.id !== id);
     setCardData(updatedHabitsList);
   }
+  function toggleCard(id) {
+    const updateToggleHabit = cardData.filter((card) => card.id !== id);
+    const toggledHabit = cardData.find((card) => card.id === id);
+    toggledHabit.checked = !toggledHabit.checked;
+    updateToggleHabit.unshift(toggledHabit);
+    setCardData(updateToggleHabit);
+  }
   return (
-    <div>
+    <Wrap>
       <Header />
       <Head>
         <title>My App</title>
@@ -34,23 +41,62 @@ export default function Home() {
       </Head>
 
       <Main>
-        <ul>
-          {cardData.map((card) => {
-            return (
-              <Card
-                key={card.id}
-                name={card.name}
-                onDelete={() => deleteCard(card.id)}
-              />
-            );
-          })}
-        </ul>
+        <div>
+          <Headline>Today</Headline>
+          <HabitForTodayList>
+            {cardData
+              .filter((item) => !item.checked)
+              .map((card) => {
+                return (
+                  <Card
+                    key={card.id}
+                    name={card.name}
+                    onDelete={() => deleteCard(card.id)}
+                    onToggle={() => toggleCard(card.id)}
+                  />
+                );
+              })}
+          </HabitForTodayList>
+          <br />
+          <Headline>Done</Headline>
+          <HabitDone>
+            {cardData
+              .filter((item) => item.checked)
+              .map((card) => {
+                return (
+                  <Card
+                    key={card.id}
+                    name={card.name}
+                    onDelete={() => deleteCard(card.id)}
+                    onToggle={() => toggleCard(card.id)}
+                  />
+                );
+              })}
+          </HabitDone>
+        </div>
         <CreateNewForm onAddNewData={appendCard} />
       </Main>
-    </div>
+    </Wrap>
   );
 }
 
 const Main = styled.main`
-  background-color: white;
+  margin: 0;
+`;
+
+const Wrap = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+`;
+const Headline = styled.h2`
+  color: black;
+`;
+const HabitForTodayList = styled.ul`
+  font-size: 1.5em;
+  color: pink;
+`;
+
+const HabitDone = styled.ul`
+  font-size: 1.2em;
+  filter: blur(0.04em);
 `;
