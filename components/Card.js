@@ -9,9 +9,9 @@ export default function Card({ id, name, onDelete, onToggle, isChecked }) {
         id={id}
         type="radio"
         defaultChecked={isChecked}
-        onClick={onToggle}
+        onClick={() => onToggle(id)}
       />
-      {name}
+      <label htmlFor={id}>{name}</label>
       <DeleteButton onClick={onDelete}>
         <Image src={deleteIcon} alt="delete your habit" />
       </DeleteButton>
@@ -32,7 +32,7 @@ const CardContainer = styled.li`
 `;
 
 const DeleteButton = styled.button`
-  background-color: transparent;
+  background-color: pink;
   width: 2em;
   height: 2.2em;
 `;

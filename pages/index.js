@@ -32,7 +32,7 @@ export default function Home() {
     setCardData(updateToggleHabit);
   }
   return (
-    <Wrap>
+    <>
       <Header />
       <Head>
         <title>My App</title>
@@ -46,9 +46,10 @@ export default function Home() {
           <HabitForTodayList>
             {cardData
               .filter((item) => !item.checked)
-              .map((card) => {
+              .map((card, id) => {
                 return (
                   <Card
+                    id={id}
                     key={card.id}
                     name={card.name}
                     onDelete={() => deleteCard(card.id)}
@@ -57,14 +58,15 @@ export default function Home() {
                 );
               })}
           </HabitForTodayList>
-          <br />
+
           <Headline>Done</Headline>
           <HabitDone>
             {cardData
               .filter((item) => item.checked)
-              .map((card) => {
+              .map((card, id) => {
                 return (
                   <Card
+                    id={id}
                     key={card.id}
                     name={card.name}
                     onDelete={() => deleteCard(card.id)}
@@ -76,7 +78,7 @@ export default function Home() {
         </div>
         <CreateNewForm onAddNewData={appendCard} />
       </Main>
-    </Wrap>
+    </>
   );
 }
 
@@ -84,10 +86,6 @@ const Main = styled.main`
   margin: 0;
 `;
 
-const Wrap = styled.div`
-  width: 100vw;
-  min-height: 100vh;
-`;
 const Headline = styled.h2`
   color: black;
 `;
