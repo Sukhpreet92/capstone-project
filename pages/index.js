@@ -93,7 +93,7 @@ const Main = styled.main`
 `;
 
 const Headline = styled.h2`
-  color: black;
+  color: #000000;
 `;
 const HabitForTodayList = styled.ul`
   font-size: 1.5em;
