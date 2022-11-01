@@ -65,7 +65,9 @@ export default function Home() {
           <HabitDone>
             {cardData
               .filter((item) => item.checked)
-              .map(({ card, id, checked, name }) => {
+
+              .map(({ id, checked, name }) => {
+
                 return (
                   <Card
                     id={id}
