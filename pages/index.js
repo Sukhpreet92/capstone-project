@@ -65,7 +65,9 @@ export default function Home() {
           <HabitDone>
             {cardData
               .filter((item) => item.checked)
+
               .map(({ id, checked, name }) => {
+
                 return (
                   <Card
                     id={id}
@@ -102,5 +104,4 @@ const HabitForTodayList = styled.ul`
 
 const HabitDone = styled.ul`
   font-size: 1.2em;
-  filter: blur(0.04em);
 `;
