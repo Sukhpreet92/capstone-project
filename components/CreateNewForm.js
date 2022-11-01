@@ -34,8 +34,8 @@ export default function CreateNewForm({ onAddNewData }) {
 const Button = styled.button`
   margin: auto;
   display: block;
-  background-color: white;
-  color: black;
+  background-color: #ffffff;
+  color: #000000;
   border-radius: 0.3rem;
   padding: 0.4rem 0.75rem;
   transition: 0.3s;

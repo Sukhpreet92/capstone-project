@@ -2,22 +2,21 @@ import styled from "styled-components";
 import Image from "next/image";
 import homeIcon from "../public/images/homeIcon.png";
 import addIcon from "../public/images/addIcon.png";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Navigation() {
-  const router = useRouter();
   return (
     <StyledNavigation>
       <UlStyledList>
         <StyledList>
-          <SyledHomeButton onClick={() => router.push("/")} type="button">
+          <Link href="/">
             <Image src={homeIcon} alt="Go to Homepage" />
-          </SyledHomeButton>
+          </Link>
         </StyledList>
         <StyledList>
-          <StyledAddButton onClick={() => router.push("Create")} type="button">
+          <Link href="Create">
             <Image src={addIcon} alt="Go to Createpage" />
-          </StyledAddButton>
+          </Link>
         </StyledList>
       </UlStyledList>
     </StyledNavigation>
@@ -25,7 +24,7 @@ export default function Navigation() {
 }
 
 const StyledNavigation = styled.nav`
-  background-color: white;
+  background-color: #ffffff;
   position: fixed;
   padding: 0%;
   bottom: 0em;
@@ -49,27 +48,6 @@ const StyledList = styled.li`
   align-items: center;
   padding-top: 0.3em;
   padding-bottom: 0.1em;
-`;
-
-const SyledHomeButton = styled.button`
-  width: 3em;
-  height: 3em;
-  border: 0em;
-  background-color: transparent;
-
-  &:hover {
-    cursor: pointer;
-
-    filter: invert(1);
-  }
-`;
-
-const StyledAddButton = styled.button`
-  width: 3em;
-  height: 3em;
-  border: 0em;
-  background-color: transparent;
-  padding-bottom: 0.5em;
   &:hover {
     cursor: pointer;
 

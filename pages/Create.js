@@ -35,16 +35,3 @@ export default function Home() {
 const Main = styled.main`
   margin: 0;
 `;
-
-const Headline = styled.h2`
-  color: black;
-`;
-const HabitForTodayList = styled.ul`
-  font-size: 1.5em;
-  color: pink;
-`;
-
-const HabitDone = styled.ul`
-  font-size: 1.2em;
-  filter: blur(0.04em);
-`;

@@ -32,7 +32,7 @@ const CardContainer = styled.li`
 `;
 
 const DeleteButton = styled.button`
-  background-color: white;
+  background-color: #ffffff;
   width: 3em;
   height: 3em;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
