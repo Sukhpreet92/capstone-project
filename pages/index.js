@@ -9,7 +9,7 @@ import Card from "../components/Card";
 import { nanoid } from "nanoid";
 import Navigation from "../components/Navigation";
 
-export default function Home(items) {
+export default function Home() {
   const [cardData, setCardData] = useState(HabitsData);
 
   function appendCard(name) {
@@ -47,15 +47,15 @@ export default function Home(items) {
           <HabitForTodayList>
             {cardData
               .filter((item) => !item.checked)
-              .map((card, id, checked) => {
+              .map(({ id, checked, name }) => {
                 return (
                   <Card
                     id={id}
-                    key={card.id}
-                    name={card.name}
-                    isChecked={!checked}
-                    onDelete={() => deleteCard(card.id)}
-                    onToggle={() => toggleCard(card.id)}
+                    key={id}
+                    name={name}
+                    isChecked={checked}
+                    onDelete={() => deleteCard(id)}
+                    onToggle={() => toggleCard(id)}
                   />
                 );
               })}
@@ -65,15 +65,15 @@ export default function Home(items) {
           <HabitDone>
             {cardData
               .filter((item) => item.checked)
-              .map((card, id, checked) => {
+              .map(({ card, id, checked, name }) => {
                 return (
                   <Card
                     id={id}
-                    key={card.id}
-                    name={card.name}
+                    key={id}
+                    name={name}
                     isChecked={checked}
-                    onDelete={() => deleteCard(card.id)}
-                    onToggle={() => toggleCard(card.id)}
+                    onDelete={() => deleteCard(id)}
+                    onToggle={() => toggleCard(id)}
                   />
                 );
               })}

@@ -9,9 +9,9 @@ export default function Card({ id, name, onDelete, isChecked, onToggle }) {
         id={id}
         type="checkbox"
         defaultChecked={isChecked}
-        onClick={onToggle}
+        onClick={() => onToggle(id)}
       />
-      <label>{name}</label>
+      <label htmlFor={id}>{name}</label>
       <DeleteButton onClick={onDelete}>
         <Image src={deleteIcon} alt="delete your habit" />
       </DeleteButton>
