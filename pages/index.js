@@ -7,6 +7,7 @@ import CreateNewForm from "../components/CreateNewForm";
 
 import Card from "../components/Card";
 import { nanoid } from "nanoid";
+import Navigation from "../components/Navigation";
 
 export default function Home() {
   const [cardData, setCardData] = useState(HabitsData);
@@ -76,7 +77,10 @@ export default function Home() {
               })}
           </HabitDone>
         </div>
+
         <CreateNewForm onAddNewData={appendCard} />
+
+        <Navigation />
       </Main>
     </>
   );

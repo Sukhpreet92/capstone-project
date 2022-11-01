@@ -40,6 +40,7 @@ const Button = styled.button`
   padding: 0.4rem 0.75rem;
   transition: 0.3s;
   align-items: center;
+  margin-bottom: 6em;
 
   &:hover {
     cursor: pointer;
