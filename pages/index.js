@@ -47,14 +47,15 @@ export default function Home() {
           <HabitForTodayList>
             {cardData
               .filter((item) => !item.checked)
-              .map((card, id) => {
+              .map(({ id, checked, name }) => {
                 return (
                   <Card
                     id={id}
-                    key={card.id}
-                    name={card.name}
-                    onDelete={() => deleteCard(card.id)}
-                    onToggle={() => toggleCard(card.id)}
+                    key={id}
+                    name={name}
+                    isChecked={checked}
+                    onDelete={() => deleteCard(id)}
+                    onToggle={() => toggleCard(id)}
                   />
                 );
               })}
@@ -64,14 +65,15 @@ export default function Home() {
           <HabitDone>
             {cardData
               .filter((item) => item.checked)
-              .map((card, id) => {
+              .map(({ card, id, checked, name }) => {
                 return (
                   <Card
                     id={id}
-                    key={card.id}
-                    name={card.name}
-                    onDelete={() => deleteCard(card.id)}
-                    onToggle={() => toggleCard(card.id)}
+                    key={id}
+                    name={name}
+                    isChecked={checked}
+                    onDelete={() => deleteCard(id)}
+                    onToggle={() => toggleCard(id)}
                   />
                 );
               })}
@@ -100,5 +102,4 @@ const HabitForTodayList = styled.ul`
 
 const HabitDone = styled.ul`
   font-size: 1.2em;
-  filter: blur(0.04em);
 `;

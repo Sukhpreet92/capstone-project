@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Image from "next/image";
 import deleteIcon from "../public/images/deleteIcon.png";
 
-export default function Card({ id, name, onDelete, onToggle, isChecked }) {
+export default function Card({ id, name, onDelete, isChecked, onToggle }) {
   return (
     <CardContainer isChecked={isChecked}>
       <StyledInput
         id={id}
-        type="radio"
+        type="checkbox"
         defaultChecked={isChecked}
         onClick={() => onToggle(id)}
       />
