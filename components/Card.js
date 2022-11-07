@@ -2,17 +2,23 @@ import styled from "styled-components";
 import Image from "next/image";
 import deleteIcon from "../public/images/deleteIcon.png";
 
-export default function Card({ id, name, onDelete, onToggle, isChecked }) {
+export default function Card({
+  id,
+  name,
+  handleDelete,
+  handleToggleHabit,
+  isChecked,
+}) {
   return (
     <CardContainer isChecked={isChecked}>
       <StyledInput
         id={id}
-        type="radio"
+        type="checkbox"
         defaultChecked={isChecked}
-        onClick={() => onToggle(id)}
+        onClick={() => handleToggleHabit(id)}
       />
       <label htmlFor={id}>{name}</label>
-      <DeleteButton onClick={onDelete}>
+      <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete your habit" />
       </DeleteButton>
     </CardContainer>

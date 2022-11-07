@@ -7,18 +7,18 @@ import Link from "next/link";
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <UlStyledList>
+      <StyledListEntry>
         <StyledList>
           <Link href="/">
             <Image src={homeIcon} alt="Go to Homepage" />
           </Link>
         </StyledList>
         <StyledList>
-          <Link href="Create">
+          <Link href="create">
             <Image src={addIcon} alt="Go to Createpage" />
           </Link>
         </StyledList>
-      </UlStyledList>
+      </StyledListEntry>
     </StyledNavigation>
   );
 }
@@ -35,7 +35,7 @@ const StyledNavigation = styled.nav`
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 `;
 
-const UlStyledList = styled.ul`
+const StyledListEntry = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-around;
