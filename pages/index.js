@@ -9,6 +9,7 @@ export default function Home({ habits, handleToggleHabit, handleDelete }) {
     <>
       <Header />
       <Main>
+
         <ul>
           <HabitOnGoing
             habits={habits}
@@ -21,6 +22,7 @@ export default function Home({ habits, handleToggleHabit, handleDelete }) {
             handleDelete={handleDelete}
           />
         </ul>
+
       </Main>
       <Navigation />
     </>
@@ -30,3 +32,4 @@ export default function Home({ habits, handleToggleHabit, handleDelete }) {
 const Main = styled.main`
   margin: 0;
 `;
+
