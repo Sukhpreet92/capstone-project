@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import Navigation from "../components/Navigation";
 
 export default function Create({ appendHabit }) {
   const router = useRouter();
@@ -8,6 +9,11 @@ export default function Create({ appendHabit }) {
     //Data for the form
     const formData = new FormData(event.target);
     const { title } = Object.fromEntries(formData);
+
+    if (title.trim() === "") {
+      alert("Please Enter your habit!");
+      return;
+    }
 
     appendHabit(title);
     router.push("/");
@@ -38,7 +44,7 @@ export default function Create({ appendHabit }) {
               name="details"
               rows="1"
               maxLength="50"
-              minLength={3}
+              minLength={2}
               required
             ></InputBox>
             <StyledLabel htmlFor="Starting date">Starting date</StyledLabel>
@@ -89,6 +95,7 @@ export default function Create({ appendHabit }) {
           </form>
         </StyledFieldset>
       </main>
+      <Navigation />
     </div>
   );
 }
@@ -104,6 +111,7 @@ const InputBox = styled.input`
   backdrop-filter: blur(30px);
   border-radius: 0.5em;
   font-size: 1.2rem;
+  border: 0;
 `;
 
 const DateInput = styled.input`
@@ -114,11 +122,13 @@ const DateInput = styled.input`
   backdrop-filter: blur(30px);
   border-radius: 0.5em;
   font-size: 1.2rem;
+  border: 0;
 `;
 const StyledLabel = styled.label`
   font-size: 1.5em;
   display: flex;
   justify-content: left;
+  border: 0;
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -142,6 +152,7 @@ const CancelButton = styled.button`
   transition: 0.3s;
   margin-bottom: 3em;
   background-color: #ffcccb;
+  border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
@@ -157,6 +168,7 @@ const SubmitButton = styled.button`
   transition: 0.3s;
   margin-bottom: 3em;
   background-color: #90ee90;
+  border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
