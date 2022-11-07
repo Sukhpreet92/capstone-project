@@ -8,9 +8,12 @@ export default function Navigation() {
   return (
     <StyledNavigation>
       <StyledListEntry>
+
         <StyledList>
-          <Link href="/">
-            <Image src={homeIcon} alt="Go to Homepage" />
+          <Link href="/" passHref>
+            <NavLink aria-label="Go to Homepage">
+              <Image src={homeIcon} alt="Go to Homepage" />
+            </NavLink>
           </Link>
         </StyledList>
         <StyledList>
@@ -36,6 +39,8 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledListEntry = styled.ul`
+=======
+
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -51,6 +56,17 @@ const StyledList = styled.li`
   &:hover {
     cursor: pointer;
 
+    filter: invert(1);
+  }
+`;
+
+const NavLink = styled.a`
+  width: 3em;
+  border: 0em;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
     filter: invert(1);
   }
 `;

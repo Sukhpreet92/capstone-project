@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import deleteIcon from "../public/images/deleteIcon.png";
 
+
 export default function Card({
   id,
   name,
@@ -9,6 +10,7 @@ export default function Card({
   handleToggleHabit,
   isChecked,
 }) {
+
   return (
     <CardContainer isChecked={isChecked}>
       <StyledInput
