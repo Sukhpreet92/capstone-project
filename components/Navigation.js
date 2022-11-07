@@ -7,22 +7,18 @@ import Link from "next/link";
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <ListEntry>
+      <StyledListEntry>
         <StyledList>
-          <Link href="/" passHref>
-            <NavLink aria-label="Go to Homepage">
-              <Image src={homeIcon} alt="Go to Homepage" />
-            </NavLink>
+          <Link href="/">
+            <Image src={homeIcon} alt="Go to Homepage" />
           </Link>
         </StyledList>
         <StyledList>
-          <Link href="Create">
-            <NavLink aria-label="Go to Createpage">
-              <Image src={addIcon} alt="Go to Createpage" />
-            </NavLink>
+          <Link href="create">
+            <Image src={addIcon} alt="Go to Createpage" />
           </Link>
         </StyledList>
-      </ListEntry>
+      </StyledListEntry>
     </StyledNavigation>
   );
 }
@@ -39,7 +35,7 @@ const StyledNavigation = styled.nav`
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 `;
 
-const ListEntry = styled.ul`
+const StyledListEntry = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -55,17 +51,6 @@ const StyledList = styled.li`
   &:hover {
     cursor: pointer;
 
-    filter: invert(1);
-  }
-`;
-
-const NavLink = styled.a`
-  width: 3em;
-  border: 0em;
-  background-color: transparent;
-
-  &:hover {
-    cursor: pointer;
     filter: invert(1);
   }
 `;
