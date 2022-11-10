@@ -2,28 +2,15 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Navigation from "../components/Navigation";
 
-export default function Create() {
+export default function Create({ appendHabit }) {
   const router = useRouter();
-
-  async function handleSubmit(event) {
+  function sendForm(event) {
     event.preventDefault();
-
+    //Data for the form
     const formData = new FormData(event.target);
-    const { name } = Object.fromEntries(formData);
-    const data = {
-      name: name,
-      isFinished: false,
-    };
-    const JSONdata = JSON.stringify(data);
-    const url = "/api/habits";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
-    await fetch(url, options);
+    const { title } = Object.fromEntries(formData);
+
+    appendHabit(title);
     router.push("/");
   }
 
@@ -32,20 +19,18 @@ export default function Create() {
       <main>
         <StyledFieldset>
           <Title>Add New Habit</Title>
-          <form onSubmit={handleSubmit}>
-            <StyledLabel htmlFor="name">Habit</StyledLabel>
+          <form onSubmit={sendForm}>
+            <StyledLabel htmlFor="Habit">Habit</StyledLabel>
             <InputBox
               aria-label="Enter your habit"
               type="text"
-              name="name"
-              id="name"
-              rows="1"
               placeholder="&#9997;&#65039;Enter your habit..."
+              name="title"
+              rows="1"
               maxLength="50"
               minLength={3}
               required
-            />
-
+            ></InputBox>
             <StyledLabel htmlFor="Details">Details</StyledLabel>
             <InputBox
               aria-label="Enter details to your habit"
@@ -62,7 +47,6 @@ export default function Create() {
               aria-label="Enter your starting date"
               type="date"
               name="date"
-              id="date"
               required
             ></DateInput>
             <StyledLabel htmlfor="Frequency">Frequency</StyledLabel>
@@ -100,16 +84,17 @@ export default function Create() {
             <input type="radio" name="Daytime" aria-label="select for Night" />
 
             <label htmlfor="Night">Night</label>
-            <SubmitButton type="submit">Create</SubmitButton>
+
+            <SubmitButton type="submit">Submit</SubmitButton>
             <CancelButton onClick={() => router.push("/")}>Cancel</CancelButton>
           </form>
         </StyledFieldset>
       </main>
+
       <Navigation />
     </div>
   );
 }
-
 const Title = styled.h2`
   text-align: center;
 `;
@@ -122,6 +107,7 @@ const InputBox = styled.input`
   backdrop-filter: blur(30px);
   border-radius: 0.5em;
   font-size: 1.2rem;
+
   border: 0;
 `;
 
@@ -133,12 +119,14 @@ const DateInput = styled.input`
   backdrop-filter: blur(30px);
   border-radius: 0.5em;
   font-size: 1.2rem;
+
   border: 0;
 `;
 const StyledLabel = styled.label`
   font-size: 1.5em;
   display: flex;
   justify-content: left;
+
   border: 0;
 `;
 
@@ -163,7 +151,9 @@ const CancelButton = styled.button`
   transition: 0.3s;
   margin-bottom: 3em;
   background-color: #ffcccb;
+
   border: 0;
+
   &:hover {
     cursor: pointer;
     filter: invert(1);
@@ -179,7 +169,9 @@ const SubmitButton = styled.button`
   transition: 0.3s;
   margin-bottom: 3em;
   background-color: #90ee90;
+
   border: 0;
+
   &:hover {
     cursor: pointer;
     filter: invert(1);
