@@ -5,18 +5,37 @@ import deleteIcon from "../public/images/deleteIcon.png";
 import unCheckedIcon from "../public/images/unCheckedIcon.png";
 import checkedIcon from "../public/images/checkedIcon.png";
 
-const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
+const Card = ({ id, name, handleDelete, isFinished }) => {
   const router = useRouter();
 
+  async function handleToggleHabit() {
+    const data = {
+      id: id,
+      isFinished: !isFinished,
+    };
+
+    const JSONdata = JSON.stringify(data);
+    const url = `/api/habits/${id}`;
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    await fetch(url, options);
+    router.push("/");
+  }
   return (
     <CardContainer isFinished={isFinished}>
-      <UnCheckedIcon onClick={handleToggleHabit}>
+      <CheckBoxIcon onClick={handleToggleHabit}>
         {!isFinished ? (
           <Image src={unCheckedIcon} alt="uncheck icon for habit" />
         ) : (
           <Image src={checkedIcon} alt="check icon for habit" />
         )}
-      </UnCheckedIcon>
+      </CheckBoxIcon>
       <label htmlFor={id}>{name}</label>
       <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete icon for habit" />
@@ -38,7 +57,7 @@ const CardContainer = styled.li`
   }
 `;
 
-const UnCheckedIcon = styled.button`
+const CheckBoxIcon = styled.button`
   border: 0;
   margin: 0;
   margin-right: 0.5rem;
