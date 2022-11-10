@@ -1,21 +1,20 @@
 import Card from "./Card";
 import styled from "styled-components";
 
-export default function HabitDone({ habits, handleToggleHabit, handleDelete }) {
+export default function HabitDone({ habits, handleDelete }) {
   return (
     <HabitContainer>
       <HabitTitle>Done</HabitTitle>
 
       <ul>
         {habits
-          .filter((habit) => habit.checked)
+          .filter((habit) => habit.isFinished)
           .map((habit) => (
             <Card
               key={habit.id}
               id={habit.id}
               name={habit.name}
-              isChecked={habit.checked}
-              handleToggleHabit={handleToggleHabit}
+              isFinished={habit.isFinished}
               handleDelete={handleDelete}
             />
           ))}
