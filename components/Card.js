@@ -5,16 +5,18 @@ import deleteIcon from "../public/images/deleteIcon.png";
 import unCheckedIcon from "../public/images/unCheckedIcon.png";
 import checkedIcon from "../public/images/checkedIcon.png";
 
-const Card = ({ id, name, handleDelete, isFinished }) => {
+const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
+  const router = useRouter();
+
   return (
     <CardContainer isFinished={isFinished}>
-      <CheckBoxIcon onClick={handleToggleHabit}>
+      <UnCheckedIcon onClick={handleToggleHabit}>
         {!isFinished ? (
           <Image src={unCheckedIcon} alt="uncheck icon for habit" />
         ) : (
           <Image src={checkedIcon} alt="check icon for habit" />
         )}
-      </CheckBoxIcon>
+      </UnCheckedIcon>
       <label htmlFor={id}>{name}</label>
       <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete icon for habit" />
@@ -36,7 +38,7 @@ const CardContainer = styled.li`
   }
 `;
 
-const CheckBoxIcon = styled.button`
+const UnCheckedIcon = styled.button`
   border: 0;
   margin: 0;
   margin-right: 0.5rem;

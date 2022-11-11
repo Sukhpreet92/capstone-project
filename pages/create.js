@@ -10,6 +10,10 @@ export default function Create() {
 
     const formData = new FormData(event.target);
     const { name } = Object.fromEntries(formData);
+    if (name.trim() === "") {
+      alert("Please Enter your habit!");
+      return;
+    }
     const data = {
       name: name,
       isFinished: false,
