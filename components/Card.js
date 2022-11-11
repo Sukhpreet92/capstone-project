@@ -40,8 +40,7 @@ const CardContainer = styled.li`
 
 const UnCheckedIcon = styled.button`
   border: 0;
-  margin: 0;
-  margin-right: 0.5rem;
+  margin: 0 0.5em 0 0;
   color: transparent;
   background-color: transparent;
 `;
