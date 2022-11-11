@@ -1,31 +1,26 @@
-import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
 
-export default function HabitOnGoing({
-  habits,
-  handleToggleHabit,
-  handleDelete,
-}) {
-  return (
-    <HabitContainer>
-      <HabitTitle>Today</HabitTitle>
-      <ul>
-        {habits
-          .filter((habit) => !habit.checked)
-          .map(({ name, id, checked }) => (
+export default function HabitOnGoing({ habits, handleDelete }) {
+  const habitOnGoing = habits.filter((habit) => !habit.isFinished);
+  {
+    return (
+      <HabitContainer>
+        <HabitTitle>Today</HabitTitle>
+        <ul>
+          {habitOnGoing.map(({ name, id, isFinished }) => (
             <Card
               key={id}
               id={id}
               name={name}
-              isChecked={checked}
-              handleToggleHabit={handleToggleHabit}
+              isFinished={isFinished}
               handleDelete={handleDelete}
             />
           ))}
-      </ul>
-    </HabitContainer>
-  );
+        </ul>
+      </HabitContainer>
+    );
+  }
 }
 const HabitTitle = styled.h3`
   font-size: 1.2rem;
