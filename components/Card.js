@@ -37,7 +37,7 @@ const Card = ({ id, name, isFinished, handleDelete }) => {
           <Image src={checkedIcon} alt="check icon for habit" />
         )}
       </UnCheckedIcon>
-      <label htmlFor={id}>{name}</label>
+      <label >{name}</label>
       <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete icon for habit" />
       </DeleteButton>
