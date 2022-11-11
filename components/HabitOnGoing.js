@@ -1,26 +1,27 @@
+import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
 
 export default function HabitOnGoing({ habits, handleDelete }) {
-  const habitOnGoing = habits.filter((habit) => !habit.isFinished);
-  {
-    return (
-      <HabitContainer>
-        <HabitTitle>Today</HabitTitle>
-        <ul>
-          {habitOnGoing.map(({ name, id, isFinished }) => (
-            <Card
-              key={id}
-              id={id}
-              name={name}
-              isFinished={isFinished}
-              handleDelete={handleDelete}
-            />
-          ))}
-        </ul>
-      </HabitContainer>
-    );
-  }
+  const habitsOnGoing = habits.filter((habit) => !habit.isFinished);
+
+  return (
+    <HabitContainer>
+      <HabitTitle>Today</HabitTitle>
+
+      <ul>
+        {habitsOnGoing.map(({ id, name, isFinished }) => (
+          <Card
+            key={id}
+            id={id}
+            name={name}
+            isFinished={isFinished}
+            handleDelete={handleDelete}
+          />
+        ))}
+      </ul>
+    </HabitContainer>
+  );
 }
 const HabitTitle = styled.h3`
   font-size: 1.2rem;

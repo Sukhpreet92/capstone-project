@@ -5,8 +5,28 @@ import deleteIcon from "../public/images/deleteIcon.png";
 import unCheckedIcon from "../public/images/unCheckedIcon.png";
 import checkedIcon from "../public/images/checkedIcon.png";
 
-const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
+const Card = ({ id, name, isFinished, handleDelete }) => {
   const router = useRouter();
+
+  async function handleToggleHabit() {
+    const data = {
+      id: id,
+      isFinished: !isFinished,
+    };
+
+    const JSONdata = JSON.stringify(data);
+    const url = `/api/habits/${id}`;
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    await fetch(url, options);
+    router.push("/");
+  }
 
   return (
     <CardContainer isFinished={isFinished}>
@@ -24,7 +44,6 @@ const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
     </CardContainer>
   );
 };
-
 export default Card;
 
 const CardContainer = styled.li`
