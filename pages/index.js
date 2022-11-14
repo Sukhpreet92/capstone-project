@@ -26,24 +26,6 @@ export default function Home({ habits }) {
 
   const [deleteButton, setDeleteButton] = useState({ show: false, id: null });
 
-  async function handleToggleHabit() {
-    const data = {
-      id: id,
-      isFinished: !isFinished,
-    };
-
-    const JSONdata = JSON.stringify(data);
-    const url = `/api/tasks/${id}`;
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
-
-    await fetch(url, options);
-  }
   function handleDelete(id) {
     setDeleteButton({ show: true, id });
   }
@@ -78,16 +60,8 @@ export default function Home({ habits }) {
     <>
       <Header />
       <main>
-        <HabitOnGoing
-          habits={habits}
-          handleDelete={handleDelete}
-          handleToggleHabit={handleToggleHabit}
-        />
-        <HabitDone
-          habits={habits}
-          handleDelete={handleDelete}
-          handleToggleHabit={handleToggleHabit}
-        />
+        <HabitOnGoing habits={habits} handleDelete={handleDelete} />
+        <HabitDone habits={habits} handleDelete={handleDelete} />
         {deleteButton.show && (
           <DeleteButton onDelete={onDelete} onCancel={onCancel} />
         )}

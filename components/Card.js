@@ -5,8 +5,28 @@ import deleteIcon from "../public/images/deleteIcon.png";
 import unCheckedIcon from "../public/images/unCheckedIcon.png";
 import checkedIcon from "../public/images/checkedIcon.png";
 
-const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
+const Card = ({ id, name, isFinished, handleDelete }) => {
   const router = useRouter();
+
+  async function handleToggleHabit() {
+    const data = {
+      id: id,
+      isFinished: !isFinished,
+    };
+
+    const JSONdata = JSON.stringify(data);
+    const url = `/api/habits/${id}`;
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    await fetch(url, options);
+    router.push("/");
+  }
 
   return (
     <CardContainer isFinished={isFinished}>
@@ -17,14 +37,13 @@ const Card = ({ id, name, handleDelete, isFinished, handleToggleHabit }) => {
           <Image src={checkedIcon} alt="check icon for habit" />
         )}
       </UnCheckedIcon>
-      <label htmlFor={id}>{name}</label>
+      <label>{name}</label>
       <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete icon for habit" />
       </DeleteButton>
     </CardContainer>
   );
 };
-
 export default Card;
 
 const CardContainer = styled.li`
@@ -49,7 +68,5 @@ const DeleteButton = styled.button`
   background-color: #ffffff;
   width: 3em;
   height: 3em;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: var(--box-shadow);
 `;

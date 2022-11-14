@@ -1,27 +1,22 @@
 import styled from "styled-components";
-import Image from "next/image";
-import cancelIcon from "../public/images/cancelIcon.png";
-import yesIcon from "../public/images/yesIcon.png";
-import noIcon from "../public/images/noIcon.png";
 
 export default function DeleteAndCancelButton({ onDelete, onCancel }) {
   return (
     <Container>
       <div>
-        <h2>Are you sure you want to forgo your habit?</h2>
-        <CancelIcon onClick={onCancel}>
-          <Image src={cancelIcon} alt="cancel icon to cancel the box" />
-        </CancelIcon>
-        <DeleteButton onClick={onDelete}>
-          <Image src={yesIcon} alt="yes icon to delete the habit" />
-        </DeleteButton>
-        <DeleteButton onClick={onCancel}>
-          <Image src={noIcon} alt="no icon to cancel the deletion" />
-        </DeleteButton>
+        <Title>Are you sure you want to forgo your habit?</Title>
+        <CancelIcon onClick={onCancel}>X</CancelIcon>
+        <DeleteButton onClick={onDelete}>Yes</DeleteButton>
+        <CancelButton onClick={onCancel}>No</CancelButton>
       </div>
     </Container>
   );
 }
+
+const Title = styled.div`
+  font-size: 1.5em;
+  margin: 1em;
+`;
 
 const Container = styled.div`
   position: fixed;
@@ -46,17 +41,40 @@ const CancelIcon = styled.button`
     filter: invert(1);
   }
 `;
-const DeleteButton = styled.button`
+const CancelButton = styled.button`
   margin: auto;
   display: block;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 0.3rem;
   padding: 0.4rem 0.75rem;
   transition: 0.3s;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  background: transparent;
+  margin-bottom: 2em 0 3em 0;
+  background-color: #ffcccb;
   border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
+    letter-spacing: 5px;
+  }
+`;
+
+const DeleteButton = styled.button`
+  margin: auto;
+  display: block;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.75rem;
+  transition: 0.3s;
+  margin-bottom: 2em;
+  margin-top: 3em;
+  background-color: #90ee90;
+  border: 0;
+  &:hover {
+    cursor: pointer;
+    filter: invert(1);
+
+    letter-spacing: 5px;
   }
 `;

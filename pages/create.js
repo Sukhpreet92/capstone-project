@@ -69,37 +69,66 @@ export default function Create() {
               id="date"
               required
             ></DateInput>
-            <StyledLabel htmlfor="Frequency">Frequency</StyledLabel>
-            <input type="radio" name="Frequency" value="Daily" />
-            <label htmlfor="Daily">Daily</label>
-            <input type="radio" name="Frequency" value="Weekly" />
-            <label htmlfor="Weekly">Weekly</label>
-            <input type="radio" name="Frequency" value="Monthly" />
-            <label htmlfor="Monthly">Monthly</label>
-            <StyledLabel htmlFor="Daytime">Daytime</StyledLabel>
-            <input
-              type="radio"
-              name="Daytime"
-              aria-label="select for All-day"
-            />
-            <label htmlfor="All-day">All-day</label>
-            <input
-              type="radio"
-              name="Daytime"
-              aria-label="select for Morning"
-            />
-            <label htmlfor="Afternoon">Morning</label>
-            <input
-              type="radio"
-              name="Daytime"
-              aria-label="select for Evening"
-            />
-            <label htmlfor="Afternoon">Evening</label>
-            <input type="radio" name="Daytime" aria-label="select for Night" />
 
-            <label htmlfor="Night">Night</label>
+            <StyledLabel htmlfor="Frequency">Frequency</StyledLabel>
+            <FormRadioItem>
+              <FrequencyContaniner
+                type="radio"
+                name="Frequency"
+                value="Daily"
+              />
+              <label for="Daily">Daily</label>
+              <FrequencyContaniner
+                type="radio"
+                name="Frequency"
+                value="Weekly"
+              />
+              <label for="Weekly">Weekly</label>
+              <FrequencyContaniner
+                type="radio"
+                name="Frequency"
+                value="Monthly"
+              />
+
+              <label for="Monthly">Monthly</label>
+            </FormRadioItem>
+            <StyledLabel htmlFor="Daytime">Daytime</StyledLabel>
+            <FormRadioItem>
+              <FrequencyContaniner
+                type="radio"
+                name="Daytime"
+                aria-label="select for All-day"
+              />
+              <label htmlfor="All-day">AllDay</label>
+              <FrequencyContaniner
+                type="radio"
+                name="Daytime"
+                aria-label="select for Morning"
+              />
+              <label htmlfor="Afternoon">Morning</label>
+              <FrequencyContaniner
+                type="radio"
+                name="Daytime"
+                aria-label="select for Evening"
+              />
+              <label htmlfor="Afternoon">Evening</label>
+              <FrequencyContaniner
+                type="radio"
+                name="Daytime"
+                aria-label="select for Night"
+              />
+
+              <label htmlfor="Night">Night</label>
+            </FormRadioItem>
             <SubmitButton type="submit">Create</SubmitButton>
-            <CancelButton onClick={() => router.push("/")}>Cancel</CancelButton>
+            <CancelButton
+              onClick={(event) => {
+                event.preventDefault();
+                router.push("/");
+              }}
+            >
+              Cancel
+            </CancelButton>
           </form>
         </StyledFieldset>
       </main>
@@ -108,8 +137,9 @@ export default function Create() {
   );
 }
 
-const Title = styled.h2`
+const Title = styled.div`
   text-align: center;
+  font-size: 1.5rem;
 `;
 const InputBox = styled.input`
   align-self: center;
@@ -124,16 +154,14 @@ const InputBox = styled.input`
 
 const DateInput = styled.input`
   align-self: center;
-  border: 1 solid;
   width: 99%;
-  height: 2rem;
+  height: 1.2rem;
   backdrop-filter: blur(30px);
-  border-radius: 0.5em;
   font-size: 1.2rem;
   border: 0;
+  color: var(--text-primary);
 `;
 const StyledLabel = styled.label`
-  font-size: 1.5em;
   display: flex;
   justify-content: left;
   border: 0;
@@ -142,9 +170,7 @@ const StyledLabel = styled.label`
 const StyledFieldset = styled.fieldset`
   display: relative;
   background: rgba(255, 255, 255);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: var(--box-shadow);
   padding: 1rem 0 1rem 1rem;
   margin: 1em 1em 1em 1em;
   border: none;
@@ -157,12 +183,13 @@ const CancelButton = styled.button`
   border-radius: 0.3rem;
   padding: 0.4rem 0.75rem;
   transition: 0.3s;
-  margin-bottom: 3em;
+  margin-bottom: 2em 0 3em 0;
   background-color: #ffcccb;
   border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
+    letter-spacing: 5px;
   }
 `;
 const SubmitButton = styled.button`
@@ -173,11 +200,25 @@ const SubmitButton = styled.button`
   border-radius: 0.3rem;
   padding: 0.4rem 0.75rem;
   transition: 0.3s;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
+  margin-top: 3em;
   background-color: #90ee90;
   border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
+
+    letter-spacing: 5px;
   }
+`;
+
+const FrequencyContaniner = styled.input`
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+`;
+
+const FormRadioItem = styled.li`
+  padding-left: 0em;
+  display: flex;
+  font-size: 0.9em;
 `;
