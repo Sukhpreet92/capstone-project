@@ -36,9 +36,10 @@ const CancelIcon = styled.button`
   display: block;
   background-color: transparent;
   border: 0;
+  transition: transform 0.2s;
   &:hover {
     cursor: pointer;
-    filter: invert(1);
+    transform: scale(1.5);
   }
 `;
 const CancelButton = styled.button`
@@ -51,11 +52,12 @@ const CancelButton = styled.button`
   transition: 0.3s;
   margin-bottom: 2em 0 3em 0;
   background-color: #ffcccb;
+  transition: transform 0.2s;
   border: 0;
   &:hover {
     cursor: pointer;
     filter: invert(1);
-    letter-spacing: 5px;
+    transform: scale(1.5);
   }
 `;
 
@@ -71,10 +73,11 @@ const DeleteButton = styled.button`
   margin-top: 3em;
   background-color: #90ee90;
   border: 0;
+  transition: transform 0.2s;
   &:hover {
     cursor: pointer;
     filter: invert(1);
 
-    letter-spacing: 5px;
+    transform: scale(1.5);
   }
 `;
