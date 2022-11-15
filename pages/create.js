@@ -155,16 +155,18 @@ const InputBox = styled.input`
 const DateInput = styled.input`
   align-self: center;
   width: 99%;
-  height: 1.2rem;
-  backdrop-filter: blur(30px);
-  font-size: 1.2rem;
+  height: 1.5rem;
+  font-size: 1rem;
   border: 0;
+
   color: var(--text-primary);
 `;
 const StyledLabel = styled.label`
   display: flex;
   justify-content: left;
   border: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -186,10 +188,11 @@ const CancelButton = styled.button`
   margin-bottom: 2em 0 3em 0;
   background-color: #ffcccb;
   border: 0;
+  margin-bottom: 2em;
   &:hover {
     cursor: pointer;
     filter: invert(1);
-    letter-spacing: 5px;
+    letter-spacing: 0.5em;
   }
 `;
 const SubmitButton = styled.button`
@@ -208,7 +211,7 @@ const SubmitButton = styled.button`
     cursor: pointer;
     filter: invert(1);
 
-    letter-spacing: 5px;
+    letter-spacing: 0.5em;
   }
 `;
 
@@ -221,4 +224,6 @@ const FormRadioItem = styled.li`
   padding-left: 0em;
   display: flex;
   font-size: 0.9em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 `;

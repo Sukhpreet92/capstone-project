@@ -37,7 +37,7 @@ const Card = ({ id, name, isFinished, handleDelete }) => {
           <Image src={checkedIcon} alt="check icon for habit" />
         )}
       </UnCheckedIcon>
-      <label>{name}</label>
+      <HabitContainer onClick={handleToggleHabit}>{name}</HabitContainer>
       <DeleteButton onClick={() => handleDelete(id)}>
         <Image src={deleteIcon} alt="delete icon for habit" />
       </DeleteButton>
@@ -62,6 +62,9 @@ const UnCheckedIcon = styled.button`
   margin: 0 0.5em 0 0;
   color: transparent;
   background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const DeleteButton = styled.button`
@@ -69,4 +72,15 @@ const DeleteButton = styled.button`
   width: 3em;
   height: 3em;
   box-shadow: var(--box-shadow);
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const HabitContainer = styled.label`
+  margin-top: 0.5em;
+  transition: 0.3s;
+  &:hover {
+    letter-spacing: 0.1em;
+  }
 `;
